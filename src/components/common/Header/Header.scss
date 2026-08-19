@@ -1,0 +1,179 @@
+@use '../../../styles/variables' as *;
+
+// ─── Light theme overrides ───────────────────────────────────────────────────
+:root[data-theme="light"] {
+    --bg-dark: #f0f2f5;
+    --bg-card: #ffffff;
+    --bg-glass: rgba(255, 255, 255, 0.75);
+    --text-primary: #0d0f1a;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+    --border-subtle: rgba(0, 0, 0, 0.1);
+}
+
+:root,
+:root[data-theme="dark"] {
+    --bg-dark: #0b0c10;
+    --bg-card: #14161f;
+    --bg-glass: rgba(18, 20, 29, 0.75);
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --border-subtle: rgba(255, 255, 255, 0.12);
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    padding: 0 $spacing-lg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: $z-header;
+    background: linear-gradient(180deg, var(--bg-glass) 0%, rgba(0, 0, 0, 0) 100%);
+
+    @media (max-width: 768px) {
+        padding: 0 $spacing-md;
+    }
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+}
+
+.logo-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text {
+    font-family: $font-main;
+    font-size: $font-size-lg;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: $text-primary;
+
+    span {
+        color: $accent-red;
+        font-weight: 400;
+    }
+}
+
+.tagline {
+    font-family: $font-main;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: $text-muted;
+    text-transform: uppercase;
+
+    @media (max-width: 480px) {
+        display: none;
+    }
+}
+
+.back-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: $bg-glass;
+    border: 1px solid $border-subtle;
+    color: $text-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all $transition-fast;
+    backdrop-filter: blur(8px);
+
+    &:hover {
+        color: $text-primary;
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+}
+
+.theme-pill {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    border-radius: 20px;
+    background: rgba(20, 22, 31, 0.8);
+    border: 1px solid $border-subtle;
+    backdrop-filter: blur(8px);
+}
+
+.theme-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: $text-muted;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &.active {
+        background: $accent-red;
+        color: $text-primary;
+        box-shadow: 0 2px 8px rgba(229, 57, 53, 0.4);
+    }
+
+    &:hover:not(.active) {
+        color: $text-primary;
+    }
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: $bg-glass;
+    border: 1px solid $border-subtle;
+    color: $text-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all $transition-fast;
+    backdrop-filter: blur(8px);
+
+    &:hover {
+        color: $text-primary;
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    &--disabled,
+    &:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+.check-btn {
+    background: $accent-red;
+    border-color: $accent-red;
+    color: $text-primary;
+    box-shadow: 0 0 12px rgba(229, 57, 53, 0.5);
+
+    &:hover {
+        background: $accent-red-bright;
+        border-color: $accent-red-bright;
+    }
+}

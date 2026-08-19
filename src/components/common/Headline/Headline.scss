@@ -1,0 +1,55 @@
+@use '../../../styles/variables' as *;
+
+.headline-wrapper {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: $z-headline;
+    pointer-events: none;
+}
+
+.main-title {
+    font-family: $font-main;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: $text-primary;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+        font-size: 20px;
+    }
+}
+
+.highlight-red {
+    color: $accent-red;
+}
+
+.subtitle-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.subtitle {
+    font-family: $font-main;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: $text-muted;
+    text-transform: uppercase;
+}
+
+.red-underline {
+    width: 60px;
+    height: 2px;
+    background: $accent-red;
+    margin-top: 6px;
+    box-shadow: 0 0 10px rgba(229, 57, 53, 0.8);
+    border-radius: 1px;
+}

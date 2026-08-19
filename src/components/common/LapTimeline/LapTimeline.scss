@@ -1,0 +1,104 @@
+@use '../../../styles/variables' as *;
+
+.lap-timeline-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    height: 60px;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.svg-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.dashed-red-path {
+    fill: none;
+    stroke: $accent-red;
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+    opacity: 0.6;
+}
+
+.laps-row {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+    padding: 0 40px;
+}
+
+.lap-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.dot-wrapper {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-glass, rgba(11, 12, 16, 0.8));
+    border: 1px solid $border-subtle;
+    margin-bottom: 2px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $text-muted;
+}
+
+.lap-label {
+    font-family: $font-main;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: $text-secondary;
+}
+
+.lap-sub {
+    font-family: $font-main;
+    font-size: 9px;
+    font-weight: 400;
+    color: $text-muted;
+    opacity: 0.7;
+}
+
+.active-lap {
+    .dot-wrapper {
+        border-color: $accent-red;
+        box-shadow: 0 0 10px rgba(229, 57, 53, 0.8);
+    }
+
+    .dot {
+        background: $accent-red;
+        box-shadow: 0 0 6px #ffffff;
+    }
+
+    .lap-label {
+        color: $text-primary;
+    }
+
+    .lap-sub {
+        color: $accent-red;
+        opacity: 1;
+    }
+}

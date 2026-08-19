@@ -1,0 +1,63 @@
+@use '../../../styles/variables' as *;
+
+.stats-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 $spacing-xl;
+
+    @media (max-width: 1024px) {
+        max-width: 900px;
+        padding: 0 $spacing-md;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xl;
+    z-index: 10;
+}
+
+.left-column {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.right-column {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-value {
+    font-family: $font-main;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: $text-primary;
+    line-height: 1.1;
+
+    @media (max-width: 1024px) {
+        font-size: 26px;
+    }
+}
+
+.stat-label {
+    font-family: $font-main;
+    font-size: $font-size-xs;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: $text-muted;
+    text-transform: uppercase;
+}

@@ -1,0 +1,188 @@
+@use '../../../styles/variables' as *;
+
+.timeline-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+}
+
+.timeline-bg-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+
+    // Hide the actual circle frame — only show the glowing rings
+    .circle-frame {
+        display: none;
+    }
+}
+
+.radar-waves {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+
+    .wave1,
+    .wave2,
+    .wave3,
+    .wave4,
+    .wave5,
+    .wave6 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 0, 0, 0.4);
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.015) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .wave1 {
+        width: 340px;
+        height: 340px;
+    }
+
+    .wave2 {
+        width: 620px;
+        height: 620px;
+    }
+
+    .wave3 {
+        width: 940px;
+        height: 940px;
+    }
+
+    .wave4 {
+        width: 1300px;
+        height: 1300px;
+    }
+
+    .wave5 {
+        width: 1680px;
+        height: 1680px;
+    }
+
+    .wave6 {
+        width: 2100px;
+        height: 2100px;
+    }
+}
+
+.timeline-track-line {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg,
+            rgba(229, 57, 53, 0.9) 0px,
+            rgba(229, 57, 53, 0.9) 4px,
+            transparent 4px,
+            transparent 8px);
+    transform: translateY(-50%);
+    z-index: 3;
+}
+
+.timeline-step-dot {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #252836;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    transition: all 0.3s ease;
+    z-index: 4;
+
+    &.active {
+        background: $accent-red;
+        border-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 0 10px $accent-red, 0 0 20px rgba(229, 57, 53, 0.8);
+    }
+}
+
+.porsche-badge-container {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -88%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.tooltip-parallelogram-card {
+    position: relative;
+    background: var(--card-bg, rgba(18, 20, 29, 0.4));
+    border: 1.5px dotted var(--card-border, rgba(255, 255, 255, 0.45));
+    border-radius: 8px;
+    padding: 14px 32px;
+    transform: skewX(-14deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    pointer-events: none;
+    white-space: nowrap;
+
+    .card-inner {
+        transform: skewX(14deg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .tooltip-title {
+        font-family: $font-main;
+        font-size: 16px;
+        font-weight: 700;
+        color: $text-primary;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+        text-align: center;
+    }
+
+    .tooltip-subtitle {
+        font-family: $font-main;
+        font-size: 12px;
+        font-weight: 400;
+        color: $text-secondary;
+        text-align: center;
+    }
+}
+
+.timeline-container .porsche-circle-badge {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #000;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(229, 57, 53, 0.6), 0 0 8px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+
+    .porsche-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}

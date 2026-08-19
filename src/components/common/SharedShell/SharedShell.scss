@@ -1,0 +1,77 @@
+@use '../../../styles/variables' as *;
+
+.stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: $bg-dark;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: background 0.4s ease;
+
+    :root[data-theme="light"] & {
+        background: #f0f2f8;
+    }
+}
+
+.spotlight-cone {
+    position: absolute;
+    top: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 100vh;
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.6) 0%,
+            rgba(255, 255, 255, 0.28) 28%,
+            rgba(255, 255, 255, 0.08) 65%,
+            transparent 95%),
+        radial-gradient(ellipse 220px 420px at top center,
+            rgba(255, 255, 255, 0.75) 0%,
+            rgba(220, 230, 255, 0.35) 40%,
+            transparent 75%);
+    clip-path: polygon(43% 0%, 57% 0%, 82% 100%, 18% 100%);
+    pointer-events: none;
+    z-index: 1;
+    filter: blur(10px);
+    opacity: 0.95;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 160px;
+        height: 70px;
+        background: radial-gradient(ellipse at top center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+        filter: blur(6px);
+    }
+}
+
+.ambient-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(20, 22, 31, 0.5) 0%, rgba(11, 12, 16, 0.95) 100%);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.4s ease;
+
+    :root[data-theme="light"] & {
+        opacity: 0;
+    }
+}
+
+.main-stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: $z-base;
+}
