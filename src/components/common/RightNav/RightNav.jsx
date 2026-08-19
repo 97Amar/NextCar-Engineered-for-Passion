@@ -7,6 +7,7 @@ const RightNav = ({
     activeNav = null,
     tooltipText = null,
     tooltipActive = false,
+    onNavSelect,
 }) => {
     const items = [
         { id: "chat", icon: MessageSquare, label: "Chat" },
@@ -49,6 +50,13 @@ const RightNav = ({
                     {items.map((item) => {
                         const IconComp = item.icon;
                         const isActive = activeNav === item.id;
+                        const isClickable = Boolean(onNavSelect);
+
+                        const handleClick = () => {
+                            if (onNavSelect) {
+                                onNavSelect(item.id);
+                            }
+                        };
 
                         return (
                             <div
@@ -56,9 +64,14 @@ const RightNav = ({
                                 className="nav-item-wrapper"
                                 ref={(el) => { itemRefs.current[item.id] = el; }}
                             >
-                                <div className={`nav-btn ${isActive ? "active" : ""}`}>
+                                <button
+                                    className={`nav-btn ${isClickable ? "clickable" : ""} ${isActive ? "active" : ""}`}
+                                    onClick={handleClick}
+                                    aria-label={item.label}
+                                    type="button"
+                                >
                                     <IconComp size={18} />
-                                </div>
+                                </button>
                             </div>
                         );
                     })}

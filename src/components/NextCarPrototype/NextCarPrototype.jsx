@@ -30,11 +30,11 @@ const NextCarPrototype = () => {
     useEffect(() => {
         if (frameIndex >= 16) return;
 
-        // Screen 5 (frameIndex 5) advances faster so it shows only briefly (1 second total)
-        // Last timeline frame (11) advances faster so delivery screen appears quicker
+        // Do not auto-advance on frame 5 — wait for user to click the red doc icon to open timeline
+        if (frameIndex === 5) return;
+
         let delay = 3200;
         if (frameIndex === 1) delay = 1000;
-        else if (frameIndex === 5) delay = 2500;
         else if (frameIndex === 11) delay = 1800;
 
         const timer = setTimeout(() => {
@@ -96,6 +96,10 @@ const NextCarPrototype = () => {
             showSpotlight={frameIndex >= 1 && frameIndex <= 5}
             onNavSelect={(navId) => {
                 if (navId === "home") goToFrame(1);
+                if (navId === "doc") goToFrame(6);
+            }}
+            onRightNavSelect={(navId) => {
+                if (navId === "doc") goToFrame(6);
             }}
             onBackClick={handlePrevFrame}
         >

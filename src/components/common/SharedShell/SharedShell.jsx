@@ -15,6 +15,7 @@ const SharedShell = ({
     tooltipActive = false,
     showSpotlight = true,
     onNavSelect,
+    onRightNavSelect,
     onBackClick,
 }) => {
     return (
@@ -35,6 +36,7 @@ const SharedShell = ({
                 activeNav={activeRightNav}
                 tooltipText={tooltipText}
                 tooltipActive={tooltipActive}
+                onNavSelect={onRightNavSelect || onNavSelect}
             />
 
             <Headline />
