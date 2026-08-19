@@ -14,7 +14,7 @@ const LapTimeline = ({ activeLapIndex = 2 }) => {
         <div className="lap-timeline-container">
             <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="svg-curve">
                 <path
-                    d="M0,18 C250,10 500,26 750,10 C950,26 1200,18"
+                    d="M0,18 C250,10 500,26 750,10 C950,26 1100,10 1200,18"
                     className="dashed-red-path"
                 />
             </svg>
