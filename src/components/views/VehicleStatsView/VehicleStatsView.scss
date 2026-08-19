@@ -15,6 +15,27 @@
         max-width: 900px;
         padding: 0 $spacing-md;
     }
+
+    @media (max-width: 768px) {
+        padding: 0 68px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 0 48px;
+    }
+
+    // Scale down circle wrapper inside stats layout to avoid overlapping side columns
+    .circle-wrapper {
+        @media (max-width: 768px) {
+            width: 170px;
+            height: 170px;
+        }
+
+        @media (max-width: 500px) {
+            width: 130px;
+            height: 130px;
+        }
+    }
 }
 
 .column {
@@ -22,6 +43,14 @@
     flex-direction: column;
     gap: $spacing-2xl;
     z-index: 10;
+
+    @media (max-width: 768px) {
+        gap: 20px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 12px;
+    }
 }
 
 .left-column {
@@ -38,6 +67,10 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+
+    @media (max-width: 500px) {
+        gap: 2px;
+    }
 }
 
 .stat-value {
@@ -51,6 +84,16 @@
     @media (max-width: 1024px) {
         font-size: 26px;
     }
+
+    @media (max-width: 768px) {
+        font-size: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 12px;
+        letter-spacing: 0px;
+    }
 }
 
 .stat-label {
@@ -60,4 +103,14 @@
     letter-spacing: 2px;
     color: $text-muted;
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 7px;
+        letter-spacing: 0.5px;
+    }
 }

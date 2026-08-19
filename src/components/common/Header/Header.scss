@@ -37,6 +37,12 @@
 
     @media (max-width: 768px) {
         padding: 0 $spacing-md;
+        height: 60px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 0 12px;
+        height: 52px;
     }
 }
 
@@ -61,6 +67,11 @@
     span {
         color: $accent-red;
         font-weight: 400;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 14px;
+        letter-spacing: 1px;
     }
 }
 
@@ -91,6 +102,11 @@
     transition: all $transition-fast;
     backdrop-filter: blur(8px);
 
+    @media (max-width: 480px) {
+        width: 28px;
+        height: 28px;
+    }
+
     &:hover {
         color: $text-primary;
         border-color: rgba(255, 255, 255, 0.3);
@@ -102,6 +118,10 @@
     display: flex;
     align-items: center;
     gap: $spacing-md;
+
+    @media (max-width: 480px) {
+        gap: 6px;
+    }
 }
 
 .theme-pill {
@@ -127,6 +147,11 @@
     cursor: pointer;
     transition: all $transition-fast;
 
+    @media (max-width: 480px) {
+        width: 22px;
+        height: 22px;
+    }
+
     &.active {
         background: $accent-red;
         color: $text-primary;
@@ -151,6 +176,11 @@
     cursor: pointer;
     transition: all $transition-fast;
     backdrop-filter: blur(8px);
+
+    @media (max-width: 480px) {
+        width: 28px;
+        height: 28px;
+    }
 
     &:hover {
         color: $text-primary;

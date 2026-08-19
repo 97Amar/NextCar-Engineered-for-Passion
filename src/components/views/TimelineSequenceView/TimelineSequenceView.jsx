@@ -17,7 +17,7 @@ const TimelineSequenceView = ({ stepIndex = 0 }) => {
     const totalSteps = TIMELINE_STEPS.length - 1;
     const cappedStepIndex = Math.min(stepIndex, totalSteps);
     const currentStep = TIMELINE_STEPS[cappedStepIndex];
-    const badgeXPosition = `${10 + (cappedStepIndex / totalSteps) * 76}%`;
+    const badgeXPosition = `${15 + (cappedStepIndex / totalSteps) * 70}%`;
     const isLineWiping = stepIndex >= 4;
 
     useEffect(() => {

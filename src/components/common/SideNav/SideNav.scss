@@ -14,8 +14,13 @@
     overflow: visible;
 
     @media (max-width: 768px) {
-        left: 10px;
-        width: 80px;
+        left: 8px;
+        width: 60px;
+    }
+
+    @media (max-width: 480px) {
+        left: 4px;
+        width: 44px;
     }
 }
 
@@ -25,6 +30,10 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
+
+    @media (max-width: 480px) {
+        display: none;
+    }
 }
 
 .nav-icons-group {
@@ -35,6 +44,14 @@
     gap: 40px;
     pointer-events: auto;
     overflow: visible;
+
+    @media (max-width: 768px) {
+        gap: 28px;
+    }
+
+    @media (max-width: 480px) {
+        gap: 20px;
+    }
 }
 
 .nav-item-wrapper {
@@ -58,6 +75,16 @@
     cursor: default;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+
+    @media (max-width: 480px) {
+        width: 32px;
+        height: 32px;
+
+        svg {
+            width: 14px;
+            height: 14px;
+        }
+    }
 
     &.clickable {
         cursor: pointer;
@@ -98,6 +125,14 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     pointer-events: none;
     z-index: 9999;
+
+    @media (max-width: 768px) {
+        padding: 4px 10px;
+        font-size: 10px;
+        letter-spacing: 0px;
+        border-radius: 12px;
+        left: calc(100% + 8px);
+    }
 
     &::before {
         content: "";

@@ -67,6 +67,11 @@
         font-size: 28px;
         letter-spacing: 2px;
     }
+
+    @media (max-width: 480px) {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
 }
 
 .home-button {
@@ -83,6 +88,11 @@
     backdrop-filter: blur(12px);
     outline: none;
     z-index: 20;
+
+    @media (max-width: 480px) {
+        padding: 8px 24px;
+        font-size: 13px;
+    }
 
     &:hover {
         box-shadow: 0 10px 35px rgba(220, 38, 38, 0.4);

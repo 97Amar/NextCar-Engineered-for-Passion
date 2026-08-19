@@ -35,9 +35,19 @@
     height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 8px;
     z-index: 2;
-    padding: 0 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    @media (max-width: 768px) {
+        padding: 0 16px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 0 8px;
+    }
 }
 
 .lap-item {
@@ -57,6 +67,11 @@
     background: var(--bg-glass, rgba(11, 12, 16, 0.8));
     border: 1px solid $border-subtle;
     margin-bottom: 2px;
+
+    @media (max-width: 480px) {
+        width: 10px;
+        height: 10px;
+    }
 }
 
 .dot {
@@ -64,6 +79,11 @@
     height: 6px;
     border-radius: 50%;
     background: $text-muted;
+
+    @media (max-width: 480px) {
+        width: 4px;
+        height: 4px;
+    }
 }
 
 .lap-label {
@@ -72,6 +92,11 @@
     font-weight: 700;
     letter-spacing: 1.5px;
     color: $text-secondary;
+
+    @media (max-width: 480px) {
+        font-size: 8px;
+        letter-spacing: 0.5px;
+    }
 }
 
 .lap-sub {
@@ -80,6 +105,10 @@
     font-weight: 400;
     color: $text-muted;
     opacity: 0.7;
+
+    @media (max-width: 480px) {
+        display: none;
+    }
 }
 
 .active-lap {

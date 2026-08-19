@@ -8,6 +8,15 @@
     text-align: center;
     z-index: $z-headline;
     pointer-events: none;
+
+    @media (max-width: 768px) {
+        top: 55px;
+        width: 92%;
+    }
+
+    @media (max-width: 480px) {
+        top: 46px;
+    }
 }
 
 .main-title {
@@ -21,7 +30,13 @@
     line-height: 1.2;
 
     @media (max-width: 768px) {
-        font-size: 20px;
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 14px;
+        letter-spacing: 1.5px;
     }
 }
 
@@ -43,6 +58,11 @@
     letter-spacing: 3px;
     color: $text-muted;
     text-transform: uppercase;
+
+    @media (max-width: 480px) {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
 }
 
 .red-underline {
