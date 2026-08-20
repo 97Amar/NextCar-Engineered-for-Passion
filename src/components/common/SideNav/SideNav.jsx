@@ -1,20 +1,20 @@
-import React from "react";
+import { memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Gauge, Home, IndianRupee } from "lucide-react";
 import "./SideNav.scss";
 
-const SideNav = ({
+const NAV_ITEMS = [
+    { id: "gauge", icon: Gauge, label: "Stats" },
+    { id: "home", icon: Home, label: "Home", isClickable: true },
+    { id: "rupee", icon: IndianRupee, label: "Pricing" },
+];
+
+const SideNav = memo(({
     activeNav = "home",
     tooltipText = null,
     tooltipActive = false,
     onNavSelect,
 }) => {
-    const navItems = [
-        { id: "gauge", icon: Gauge, label: "Stats" },
-        { id: "home", icon: Home, label: "Home", isClickable: true },
-        { id: "rupee", icon: IndianRupee, label: "Pricing" },
-    ];
-
     return (
         <aside className="side-nav-container">
             <svg className="arc-svg" viewBox="0 0 100 320">
@@ -28,7 +28,7 @@ const SideNav = ({
             </svg>
 
             <div className="nav-icons-group">
-                {navItems.map((item) => {
+                {NAV_ITEMS.map((item) => {
                     const IconComponent = item.icon;
                     const isActive = activeNav === item.id;
 
@@ -78,6 +78,9 @@ const SideNav = ({
             </div>
         </aside>
     );
-};
+});
+
+SideNav.displayName = "SideNav";
 
 export default SideNav;
+

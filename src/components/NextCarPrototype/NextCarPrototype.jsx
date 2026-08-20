@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import SharedShell from "../common/SharedShell/SharedShell";
 import HeroView from "../views/HeroView/HeroView";
 import CarRevealView from "../views/CarRevealView/CarRevealView";
@@ -7,25 +7,39 @@ import PorscheFeatureView from "../views/PorscheFeatureView/PorscheFeatureView";
 import TimelineSequenceView from "../views/TimelineSequenceView/TimelineSequenceView";
 import DeliverySequenceView from "../views/DeliverySequenceView/DeliverySequenceView";
 import ThankYouView from "../views/ThankYouView/ThankYouView";
+import usePreloadImages from "../../hooks/usePreloadImages";
 import "./NextCarPrototype.scss";
 
 const NextCarPrototype = () => {
+    // Preload all high-res PNG car assets on app mount for instant frame transitions
+    usePreloadImages();
+
     const [frameIndex, setFrameIndex] = useState(1);
     const [screen4Exiting, setScreen4Exiting] = useState(false);
     const exitTimerRef = useRef(null);
 
-    const goToFrame = (nextIndex) => {
-        if (frameIndex === 5 && nextIndex !== 5) {
-            setScreen4Exiting(true);
-            clearTimeout(exitTimerRef.current);
-            exitTimerRef.current = setTimeout(() => {
-                setScreen4Exiting(false);
-                setFrameIndex(nextIndex);
-            }, 600);
-        } else {
-            setFrameIndex(nextIndex);
-        }
-    };
+    const goToFrame = useCallback((nextIndex) => {
+        setFrameIndex((prevIndex) => {
+            if (prevIndex === 5 && nextIndex !== 5) {
+                setScreen4Exiting(true);
+                clearTimeout(exitTimerRef.current);
+                exitTimerRef.current = setTimeout(() => {
+                    setScreen4Exiting(false);
+                    setFrameIndex(nextIndex);
+                }, 600);
+                return prevIndex;
+            }
+            return nextIndex;
+        });
+    }, []);
+
+    useEffect(() => {
+        return () => {
+            if (exitTimerRef.current) {
+                clearTimeout(exitTimerRef.current);
+            }
+        };
+    }, []);
 
     useEffect(() => {
         if (frameIndex >= 16) return;
@@ -42,11 +56,28 @@ const NextCarPrototype = () => {
         }, delay);
 
         return () => clearTimeout(timer);
-    }, [frameIndex]);
+    }, [frameIndex, goToFrame]);
 
-    const handlePrevFrame = () => {
-        if (frameIndex > 1) goToFrame(frameIndex - 1);
-    };
+    const handlePrevFrame = useCallback(() => {
+        setFrameIndex((prev) => (prev > 1 ? prev - 1 : prev));
+    }, []);
+
+    const handleNavSelect = useCallback((navId) => {
+        if (navId === "home") goToFrame(1);
+        if (navId === "doc") goToFrame(6);
+    }, [goToFrame]);
+
+    const handleRightNavSelect = useCallback((navId) => {
+        if (navId === "doc") goToFrame(6);
+    }, [goToFrame]);
+
+    const handleHeroPlayClick = useCallback(() => {
+        goToFrame(2);
+    }, [goToFrame]);
+
+    const handleHomeClick = useCallback(() => {
+        goToFrame(1);
+    }, [goToFrame]);
 
     let activeNav = "home";
     let activeRightNav = null;
@@ -94,16 +125,11 @@ const NextCarPrototype = () => {
             tooltipText={tooltipText}
             tooltipActive={tooltipActive}
             showSpotlight={frameIndex >= 1 && frameIndex <= 5}
-            onNavSelect={(navId) => {
-                if (navId === "home") goToFrame(1);
-                if (navId === "doc") goToFrame(6);
-            }}
-            onRightNavSelect={(navId) => {
-                if (navId === "doc") goToFrame(6);
-            }}
+            onNavSelect={handleNavSelect}
+            onRightNavSelect={handleRightNavSelect}
             onBackClick={handlePrevFrame}
         >
-            {frameIndex === 1 && <HeroView onPlayClick={() => goToFrame(2)} />}
+            {frameIndex === 1 && <HeroView onPlayClick={handleHeroPlayClick} />}
 
             {frameIndex === 2 && <CarRevealView />}
 
@@ -124,7 +150,7 @@ const NextCarPrototype = () => {
             {frameIndex >= 15 && (
                 <ThankYouView
                     step={frameIndex - 15}
-                    onHomeClick={() => goToFrame(1)}
+                    onHomeClick={handleHomeClick}
                 />
             )}
         </SharedShell>
@@ -132,3 +158,4 @@ const NextCarPrototype = () => {
 };
 
 export default NextCarPrototype;
+

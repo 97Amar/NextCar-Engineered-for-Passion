@@ -1,9 +1,9 @@
-import React from "react";
+import { memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play } from "lucide-react";
 import "./CarCircle.scss";
 
-const CarCircle = ({
+const CarCircle = memo(({
     imageSrc,
     altText = "Vehicle",
     theme = "gtr",
@@ -73,6 +73,9 @@ const CarCircle = ({
             </div>
         </div>
     );
-};
+});
+
+CarCircle.displayName = "CarCircle";
 
 export default CarCircle;
+

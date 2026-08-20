@@ -1,7 +1,7 @@
-import React from "react";
+import { memo } from "react";
 import "./Headline.scss";
 
-const Headline = () => {
+const Headline = memo(() => {
     return (
         <div className="headline-wrapper">
             <h1 className="main-title">
@@ -13,6 +13,9 @@ const Headline = () => {
             </div>
         </div>
     );
-};
+});
+
+Headline.displayName = "Headline";
 
 export default Headline;
+

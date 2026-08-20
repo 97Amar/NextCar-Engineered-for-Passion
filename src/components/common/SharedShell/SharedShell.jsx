@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import Header from "../Header/Header";
 import SideNav from "../SideNav/SideNav";
 import RightNav from "../RightNav/RightNav";
@@ -6,7 +6,7 @@ import Headline from "../Headline/Headline";
 import LapTimeline from "../LapTimeline/LapTimeline";
 import "./SharedShell.scss";
 
-const SharedShell = ({
+const SharedShell = memo(({
     children,
     activeNav = "home",
     activeRightNav = null,
@@ -46,6 +46,9 @@ const SharedShell = ({
             <LapTimeline activeLapIndex={activeLapIndex} />
         </div>
     );
-};
+});
+
+SharedShell.displayName = "SharedShell";
 
 export default SharedShell;
+

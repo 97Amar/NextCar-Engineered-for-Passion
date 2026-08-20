@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { ArrowLeft, Sun, Moon, Download, Share2, Check } from "lucide-react";
 import "./Header.scss";
 
-const Header = ({ onBackClick }) => {
+const Header = memo(({ onBackClick }) => {
     const [isDarkMode, setIsDarkMode] = useState(true);
 
     useEffect(() => {
@@ -61,6 +61,9 @@ const Header = ({ onBackClick }) => {
             </div>
         </header>
     );
-};
+});
+
+Header.displayName = "Header";
 
 export default Header;
+

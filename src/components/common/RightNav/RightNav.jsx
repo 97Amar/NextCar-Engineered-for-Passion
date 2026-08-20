@@ -1,20 +1,20 @@
-import React, { useRef, useLayoutEffect, useState, useCallback } from "react";
+import { useRef, useLayoutEffect, useState, useCallback, memo } from "react";
 import { motion } from "framer-motion";
 import { MessageSquare, FileText, ShieldCheck } from "lucide-react";
 import "./RightNav.scss";
 
-const RightNav = ({
+const RIGHT_NAV_ITEMS = [
+    { id: "chat", icon: MessageSquare, label: "Chat" },
+    { id: "doc", icon: FileText, label: "Documents" },
+    { id: "shield", icon: ShieldCheck, label: "Security" },
+];
+
+const RightNav = memo(({
     activeNav = null,
     tooltipText = null,
     tooltipActive = false,
     onNavSelect,
 }) => {
-    const items = [
-        { id: "chat", icon: MessageSquare, label: "Chat" },
-        { id: "doc", icon: FileText, label: "Documents" },
-        { id: "shield", icon: ShieldCheck, label: "Security" },
-    ];
-
     const [tooltipPos, setTooltipPos] = useState(null);
     const itemRefs = useRef({});
 
@@ -47,7 +47,7 @@ const RightNav = ({
                 </svg>
 
                 <div className="nav-icons-group">
-                    {items.map((item) => {
+                    {RIGHT_NAV_ITEMS.map((item) => {
                         const IconComp = item.icon;
                         const isActive = activeNav === item.id;
                         const isClickable = Boolean(onNavSelect);
@@ -100,6 +100,9 @@ const RightNav = ({
             )}
         </>
     );
-};
+});
+
+RightNav.displayName = "RightNav";
 
 export default RightNav;
+

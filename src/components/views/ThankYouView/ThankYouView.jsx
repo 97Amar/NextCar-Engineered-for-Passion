@@ -1,9 +1,9 @@
-import React from "react";
+import { memo } from "react";
 import { motion } from "framer-motion";
 import CarCircle from "../../common/CarCircle/CarCircle";
 import "./ThankYouView.scss";
 
-const ThankYouView = ({ step = 0, onHomeClick }) => {
+const ThankYouView = memo(({ onHomeClick }) => {
     return (
         <div className="stage-container">
             {/* Background rings only — no center circle */}
@@ -39,7 +39,10 @@ const ThankYouView = ({ step = 0, onHomeClick }) => {
             </div>
         </div>
     );
-};
+});
+
+ThankYouView.displayName = "ThankYouView";
 
 export default ThankYouView;
+
 

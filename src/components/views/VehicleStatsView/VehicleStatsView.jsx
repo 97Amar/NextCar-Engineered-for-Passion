@@ -1,9 +1,9 @@
-import React from "react";
+import { memo } from "react";
 import CarCircle from "../../common/CarCircle/CarCircle";
 import darkAudiImg from "../../../assets/images/dark_audi.png";
 import "./VehicleStatsView.scss";
 
-const VehicleStatsView = ({ showRings = false }) => {
+const VehicleStatsView = memo(({ showRings = false }) => {
     return (
         <div className="stats-layout">
             <div className="column left-column">
@@ -44,6 +44,9 @@ const VehicleStatsView = ({ showRings = false }) => {
             </div>
         </div>
     );
-};
+});
+
+VehicleStatsView.displayName = "VehicleStatsView";
 
 export default VehicleStatsView;
+

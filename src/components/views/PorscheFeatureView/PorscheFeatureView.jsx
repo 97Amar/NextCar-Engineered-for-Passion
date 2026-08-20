@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CarCircle from "../../common/CarCircle/CarCircle";
 import porsche911Img from "../../../assets/images/porsche_911.png";
 import "./PorscheFeatureView.scss";
 
-const PorscheFeatureView = ({ isExiting = false }) => {
+const PorscheFeatureView = memo(({ isExiting = false }) => {
     const [shutterClosed, setShutterClosed] = useState(false);
     const [flattenLine, setFlattenLine] = useState(false);
 
@@ -90,6 +90,9 @@ const PorscheFeatureView = ({ isExiting = false }) => {
             </motion.div>
         </div>
     );
-};
+});
+
+PorscheFeatureView.displayName = "PorscheFeatureView";
 
 export default PorscheFeatureView;
+

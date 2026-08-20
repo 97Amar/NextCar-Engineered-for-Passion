@@ -1,8 +1,8 @@
-import React from "react";
+import { memo } from "react";
 import CarCircle from "../../common/CarCircle/CarCircle";
 import "./HeroView.scss";
 
-const HeroView = ({ onPlayClick }) => {
+const HeroView = memo(({ onPlayClick }) => {
     return (
         <div className="hero-container">
             <CarCircle
@@ -13,6 +13,9 @@ const HeroView = ({ onPlayClick }) => {
             />
         </div>
     );
-};
+});
+
+HeroView.displayName = "HeroView";
 
 export default HeroView;
+

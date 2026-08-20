@@ -1,9 +1,9 @@
-import React from "react";
+import { memo } from "react";
 import CarCircle from "../../common/CarCircle/CarCircle";
 import nissanGtrImg from "../../../assets/images/nissan_gtr.png";
 import "./CarRevealView.scss";
 
-const CarRevealView = () => {
+const CarRevealView = memo(() => {
     return (
         <div className="car-reveal-container">
             <CarCircle
@@ -14,6 +14,9 @@ const CarRevealView = () => {
             />
         </div>
     );
-};
+});
+
+CarRevealView.displayName = "CarRevealView";
 
 export default CarRevealView;
+

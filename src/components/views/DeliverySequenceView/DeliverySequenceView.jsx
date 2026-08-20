@@ -1,10 +1,10 @@
-import React from "react";
+import { memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import porsche911Img from "../../../assets/images/porsche_911.png";
 import truckDeliveryCleanImg from "../../../assets/images/truck_delivery_clean.png";
 import "./DeliverySequenceView.scss";
 
-const DeliverySequenceView = ({ step = 0 }) => {
+const DeliverySequenceView = memo(({ step = 0 }) => {
     const showPorsche = step === 0;
 
     return (
@@ -66,6 +66,9 @@ const DeliverySequenceView = ({ step = 0 }) => {
             </div>
         </div>
     );
-};
+});
+
+DeliverySequenceView.displayName = "DeliverySequenceView";
 
 export default DeliverySequenceView;
+

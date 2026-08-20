@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CarCircle from "../../common/CarCircle/CarCircle";
 import porsche911Img from "../../../assets/images/porsche_911.png";
@@ -11,7 +11,7 @@ const TIMELINE_STEPS = [
     { title: "Vehicle Pickup", subtitle: "Payment & dropoff" },
 ];
 
-const TimelineSequenceView = ({ stepIndex = 0 }) => {
+const TimelineSequenceView = memo(({ stepIndex = 0 }) => {
     const [badgeVisible, setBadgeVisible] = useState(false);
 
     const totalSteps = TIMELINE_STEPS.length - 1;
@@ -23,7 +23,7 @@ const TimelineSequenceView = ({ stepIndex = 0 }) => {
     useEffect(() => {
         const t = setTimeout(() => setBadgeVisible(true), stepIndex === 0 ? 500 : 0);
         return () => clearTimeout(t);
-    }, []);
+    }, [stepIndex]);
 
     return (
         <div className="timeline-container">
@@ -89,6 +89,9 @@ const TimelineSequenceView = ({ stepIndex = 0 }) => {
             </AnimatePresence>
         </div>
     );
-};
+});
+
+TimelineSequenceView.displayName = "TimelineSequenceView";
 
 export default TimelineSequenceView;
+

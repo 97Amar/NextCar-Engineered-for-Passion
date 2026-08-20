@@ -1,4 +1,4 @@
-import React from "react";
+import { memo } from "react";
 import "./LapTimeline.scss";
 
 const LAPS = [
@@ -9,7 +9,7 @@ const LAPS = [
     { id: 5, label: "LAP 05", sub: "Final Corner" },
 ];
 
-const LapTimeline = ({ activeLapIndex = 2 }) => {
+const LapTimeline = memo(({ activeLapIndex = 2 }) => {
     return (
         <div className="lap-timeline-container">
             <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="svg-curve">
@@ -38,6 +38,9 @@ const LapTimeline = ({ activeLapIndex = 2 }) => {
             </div>
         </div>
     );
-};
+});
+
+LapTimeline.displayName = "LapTimeline";
 
 export default LapTimeline;
+

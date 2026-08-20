@@ -1,4 +1,3 @@
-import React from 'react';
 import NextCarPrototype from './components/NextCarPrototype/NextCarPrototype';
 import './App.scss';
 
